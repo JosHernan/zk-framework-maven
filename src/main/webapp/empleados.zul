@@ -1,0 +1,82 @@
+<?page title="Views Empleados" contentType="text/html;charset=UTF-8"?>
+
+<zk xmlns:n="native">
+<style>
+.z-listheader-content {
+    font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    font-style: normal;
+    color: #333;
+    padding: 4px 8px;
+    line-height: 40px;
+    position: relative;
+    overflow: hidden;
+}
+
+.z-listcell-content, .z-listgroup-content, .z-listgroupfoot-content, .z-listfooter-content {
+    font-family: "Open Sans",Arial,Sans-serif;
+    font-size: 10px;
+    font-weight: 400;
+    font-style: normal;
+    color: #555;
+    padding: 3px 4px 4px;
+    line-height: 24px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+</style>
+	<window >
+	
+	    <div align="left">
+					
+
+					
+				</div>
+				<separator />
+				<separator />
+
+
+				<div id="tableHolder" 
+		apply="org.zkoss.bind.BindComposer" 
+		viewModel="@id('vm') @init('com.servicios.ServiceEmpleado.ViewEmpleados')" >
+			<listbox width="100%" id="resultsearch" mold="paging" pageSize="10"  
+				pagingPosition="bottom" selectedItem="@bind(vm.selectedItem)"
+				model="@load(vm.showEmpleados)">
+				<listhead sizable="true">
+					<listheader align="center"
+						style="background:yellow;color:black;" label="Numero Empleado"
+						sortDirection="ascending" sort="auto(emp_no)" />
+					<listheader align="left" label="Fecha Nacimiento" />
+					<listheader align="left" label="Nombre" />
+					<listheader align="left" label="Apellido Paterno" />
+					<listheader align="left" label="Sexo" />
+					<listheader align="left" label="Fecha Contratacion" />
+					
+					
+				</listhead>
+				<template name="model" var="p1">
+					<listitem>
+					<listcell label="@load(p1.emp_no)"   />
+						<listcell label="@load(p1.fechaNacimiento)"   />
+						<listcell label="@load(p1.nombre)" />
+						<listcell label="@load(p1.apellidoPaterno)" />
+						<listcell label="@load(p1.sexo)" />
+						<listcell label="@load(p1.fechaContratacion)" />
+						
+					
+					</listitem>
+				</template>
+			</listbox>
+			<div id="loading" style="display:none;"></div>
+			<timer id="timer" delay="3000" repeats="true" ontimer="@command('showEmpleados')"/> 
+		</div>
+		<separator />
+		<separator />
+		<separator />
+		<separator />
+		<separator />
+	
+	</window>
+</zk>
