@@ -1,4 +1,4 @@
-<?page title="Views Empleados" contentType="text/html;charset=UTF-8"?>
+<?page title="Vista Empleados" contentType="text/html;charset=UTF-8"?>
 
 <zk xmlns:n="native">
 <style>
@@ -70,7 +70,6 @@
 				</template>
 			</listbox>
 			<div id="loading" style="display:none;"></div>
-			<timer id="timer" delay="3000" repeats="true" ontimer="@command('showEmpleados')"/> 
 		</div>
 		<separator />
 		<separator />
